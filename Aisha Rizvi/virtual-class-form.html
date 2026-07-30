@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Virtual Class by Aisha | Aisha Rizvi Artistry</title>
+<meta name="description" content="Sign up for a virtual makeup class with Aisha Rizvi. Online & Zoom sessions available. Elevate your artistry skills with personalized guidance.">
+<link rel="canonical" href="https://aisharizvimakeup.com/virtual-class.html">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Aisha Rizvi Artistry">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Virtual Class by Aisha | Aisha Rizvi Artistry">
+<meta property="og:description" content="Book a virtual makeup class with Aisha Rizvi. Personalized online sessions to take your artistry to the next level.">
+<meta property="og:url" content="https://aisharizvimakeup.com/virtual-class.html">
+<meta property="og:image" content="https://aisharizvimakeup.com/logo.jpeg">
+<meta property="og:site_name" content="Aisha Rizvi Artistry">
+
+<link rel="icon" type="image/jpeg" href="logo.jpeg">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Didact+Gothic&display=swap" rel="stylesheet"/>
+
+<style>
+  :root {
+    --accent: #d4b483;
+    --gold: #d4b483;
+    --gold-dim: rgba(212,180,131,0.18);
+    --gold-light: rgba(212,180,131,0.08);
+    --sig-color: #d4b483;
+    --ivory: #0a0a0a;
+    --ivory-deep: #111111;
+    --ivory-card: #1a1a1a;
+    --ink: #faf6ef;
+    --ink-mid: #f0e2c8;
+    --muted: #888880;
+    --rose: #d98f8f;
+    --border: rgba(212,180,131,0.25);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--ivory);
+    color: var(--ink);
+    font-family: 'Didact Gothic', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* ---- HEADER ---- */
+  .header {
+    background: var(--ivory-deep);
+    border-top: 3px solid var(--gold);
+    padding: 40px 48px 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .header-brand {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 6px;
+    color: var(--gold);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .header-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .header-title em { color: var(--gold); font-style: italic; }
+  .header-sub {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    line-height: 1.8;
+    max-width: 620px;
+  }
+  .header-note {
+    margin-top: 14px;
+    padding: 12px 16px;
+    border-left: 2px solid var(--gold);
+    background: var(--gold-light);
+    font-size: 11px;
+    color: var(--ink-mid);
+    letter-spacing: 0.5px;
+    line-height: 1.7;
+    max-width: 620px;
+  }
+
+  /* ---- FORM BODY ---- */
+  .form-container {}
+  .form-wrap { padding: 36px 48px 48px; max-width: 900px; }
+
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .row-single { margin-bottom: 16px; }
+
+  label {
+    display: block;
+    font-family: 'Didact Gothic', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  input, textarea, select {
+    width: 100%;
+    background: var(--ivory-card);
+    border: 1px solid var(--border);
+    color: var(--ink);
+    padding: 12px 14px;
+    font-family: 'Didact Gothic', sans-serif;
+    font-size: 13px;
+    outline: none;
+    border-radius: 0;
+    transition: border-color 0.2s, background 0.2s;
+    color-scheme: dark;
+  }
+  input:focus, textarea:focus, select:focus {
+    border-color: var(--gold);
+    background: #111111;
+  }
+  input::placeholder, textarea::placeholder {
+    color: rgba(250,246,239,0.35);
+  }
+  select option { background: var(--ivory-card); color: var(--ink); }
+  textarea { resize: vertical; line-height: 1.7; }
+
+  /* ---- RADIO TOGGLE ---- */
+  .radio-group {
+    display: flex;
+    gap: 10px;
+  }
+  .radio-option {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 14px;
+    border: 1px solid var(--border);
+    background: var(--ivory-card);
+    cursor: pointer;
+    font-size: 12px;
+    color: var(--ink-mid);
+    user-select: none;
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 2px;
+    font-size: 10px;
+  }
+  .radio-option:hover { border-color: var(--gold); color: var(--ink); }
+  .radio-option.selected {
+    border-color: var(--gold);
+    background: var(--gold-light);
+    color: var(--gold);
+  }
+  .radio-option input[type="radio"] { display: none; }
+  .radio-dot {
+    width: 12px; height: 12px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .radio-option.selected .radio-dot {
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+
+  /* ---- SECTION DIVIDER ---- */
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 24px 0;
+  }
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  /* ---- ERROR ---- */
+  .error-msg {
+    margin-bottom: 16px;
+    color: var(--rose);
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    display: none;
+  }
+
+  /* ---- SUBMIT BUTTON ---- */
+  .btn-submit {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #a07840, #d4b483);
+    color: var(--ivory);
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: opacity 0.3s;
+  }
+  .btn-submit:hover { opacity: 0.88; }
+  .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .form-note {
+    font-size: 10px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 16px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ---- SUCCESS SCREEN ---- */
+  .success-screen {
+    display: none;
+    min-height: 400px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    padding: 60px 40px;
+    text-align: center;
+    border-top: 3px solid var(--gold);
+    background: var(--ivory);
+  }
+  .success-screen.show { display: flex; }
+  .form-container.hidden { display: none; }
+
+  .success-icon { font-size: 48px; color: var(--gold); }
+  .success-title {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    font-weight: 400;
+  }
+  .success-msg {
+    font-family: 'Didact Gothic', sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 420px;
+  }
+  .btn-new {
+    margin-top: 16px;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 10px 24px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-new:hover { background: var(--gold-light); }
+
+  @media (max-width: 600px) {
+    .header { padding: 28px 20px 24px; }
+    .form-wrap { padding: 24px 20px 36px; }
+    .row { grid-template-columns: 1fr; }
+    .radio-group { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-brand">Aisha Rizvi Artistry</div>
+  <div class="header-title">Virtual <em>Class by Aisha</em></div>
+  <div class="header-sub">
+    Thank you for your interest in choosing to take a class with me. I ensure that after our session you will feel more confident  whether it's for yourself or your clients. I will make sure that all your doubts are cleared and will give you the proper guidance that you need to take your artistry skills to the next level!
+  </div>
+  <div class="header-note">
+    ★ If you are signing up for an online or Zoom class, I will send you an email with the link a few hours before on the day of the scheduled class.
+  </div>
+</div>
+
+<div class="form-container" id="formContainer">
+  <div class="form-wrap">
+
+    <!-- SECTION: PERSONAL INFO -->
+    <div class="section-label">Personal Information</div>
+
+    <div class="row">
+      <div>
+        <label for="fullName">Full Name *</label>
+        <input type="text" id="fullName" placeholder="Your full name" />
+      </div>
+      <div>
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" placeholder="your@email.com" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" placeholder="+1 (000) 000-0000" />
+      </div>
+      <div>
+        <label for="location">Location</label>
+        <input type="text" id="location" placeholder="City, State / Country" />
+      </div>
+    </div>
+
+    <div class="row-single">
+      <label for="insta">Instagram</label>
+      <input type="text" id="insta" placeholder="@yourhandle" />
+    </div>
+
+    <hr class="section-divider" />
+
+    <!-- SECTION: BACKGROUND -->
+    <div class="section-label">Your Background</div>
+
+    <div class="row">
+      <div>
+        <label>Industry Professional?</label>
+        <div class="radio-group" id="professionalGroup">
+          <label class="radio-option" onclick="selectRadio('professional','yes',this)">
+            <input type="radio" name="professional" value="yes" />
+            <span class="radio-dot"></span> Yes
+          </label>
+          <label class="radio-option" onclick="selectRadio('professional','no',this)">
+            <input type="radio" name="professional" value="no" />
+            <span class="radio-dot"></span> No
+          </label>
+        </div>
+      </div>
+      <div>
+        <label>Just Starting Out?</label>
+        <div class="radio-group" id="startingGroup">
+          <label class="radio-option" onclick="selectRadio('starting','yes',this)">
+            <input type="radio" name="starting" value="yes" />
+            <span class="radio-dot"></span> Yes
+          </label>
+          <label class="radio-option" onclick="selectRadio('starting','no',this)">
+            <input type="radio" name="starting" value="no" />
+            <span class="radio-dot"></span> No
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <hr class="section-divider" />
+
+    <!-- SECTION: CLASS DETAILS -->
+    <div class="section-label">Class Details</div>
+
+    <div class="row-single">
+      <label for="skillsPerfect">What Skills Do You Wish to Perfect? *</label>
+      <textarea id="skillsPerfect" rows="3" placeholder="e.g. Bridal makeup, cut crease, contouring, airbrush..."></textarea>
+    </div>
+
+    <div class="row-single">
+      <label for="stopping">What Is Stopping You?</label>
+      <textarea id="stopping" rows="3" placeholder="e.g. Lack of confidence, tools, technique, guidance..."></textarea>
+    </div>
+
+    <div class="row-single">
+      <label for="aboutYou">In a Few Words, Tell Me About Yourself *</label>
+      <textarea id="aboutYou" rows="4" placeholder="Share a little about your background, goals, and why you want to take this class..."></textarea>
+    </div>
+
+    <hr class="section-divider" />
+
+    <div class="error-msg" id="errorMsg">⚠ Please fill in all required fields (Full Name, Email, Skills, About Yourself).</div>
+
+    <button class="btn-submit" id="submitBtn" onclick="handleSubmit()">
+      Submit Inquiry ✦
+    </button>
+
+    <p class="form-note">★ Aisha will reach out within 48 hours to confirm your class details</p>
+  </div>
+</div>
+
+<div class="success-screen" id="successScreen">
+  <div class="success-icon">✦</div>
+  <div class="success-title">INQUIRY RECEIVED</div>
+  <p class="success-msg">
+    Thank you! Your virtual class inquiry has been received.<br/>
+    Aisha will review and reach out within 48 hours.<br/><br/>
+    <em style="color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 15px;">Check your email your Zoom link will be sent a few hours before your session.</em>
+  </p>
+  <button class="btn-new" onclick="resetForm()">New Inquiry</button>
+</div>
+
+<script>
+  // ============================================================
+  // ⚠️ APNA APPS SCRIPT URL YAHAN PASTE KARO (deploy karne ke baad)
+  // ============================================================
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzxP5S4RkgbQlvEPpTz4Hh5UgATcDky90RgmJFhGN9Sf4iztZf9yN0KDbGWoWDpxqI/exec";
+  // ============================================================
+
+  // ---- RADIO TOGGLE ----
+  var radioValues = { professional: '', starting: '' };
+
+  function selectRadio(groupName, value, clickedLabel) {
+    radioValues[groupName] = value;
+    var groupId = groupName === 'professional' ? 'professionalGroup' : 'startingGroup';
+    document.querySelectorAll('#' + groupId + ' .radio-option').forEach(function(opt) {
+      opt.classList.remove('selected');
+    });
+    clickedLabel.classList.add('selected');
+  }
+
+  // ---- SUBMIT ----
+  function handleSubmit() {
+    var fullName   = document.getElementById('fullName').value.trim();
+    var email      = document.getElementById('email').value.trim();
+    var skills     = document.getElementById('skillsPerfect').value.trim();
+    var aboutYou   = document.getElementById('aboutYou').value.trim();
+    var errorEl    = document.getElementById('errorMsg');
+
+    if (!fullName || !email || !skills || !aboutYou) {
+      errorEl.style.display = 'block';
+      return;
+    }
+    errorEl.style.display = 'none';
+
+    var btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+
+    var payload = {
+      fullName:     fullName,
+      email:        email,
+      phone:        document.getElementById('phone').value.trim(),
+      location:     document.getElementById('location').value.trim(),
+      insta:        document.getElementById('insta').value.trim(),
+      professional: radioValues.professional || 'Not specified',
+      starting:     radioValues.starting || 'Not specified',
+      skillsPerfect: skills,
+      stopping:     document.getElementById('stopping').value.trim(),
+      aboutYou:     aboutYou,
+      submittedAt:  new Date().toLocaleString()
+    };
+
+    fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data.success) {
+        document.getElementById('formContainer').classList.add('hidden');
+        document.getElementById('successScreen').classList.add('show');
+      } else {
+        throw new Error(data.error || 'Unknown error');
+      }
+    })
+    .catch(function(err) {
+      btn.disabled = false;
+      btn.textContent = 'Submit Inquiry ✦';
+      alert('Submission failed: ' + err.message + '\n\nPlease check your Apps Script URL.');
+    });
+  }
+
+  function resetForm() {
+    document.getElementById('formContainer').classList.remove('hidden');
+    document.getElementById('successScreen').classList.remove('show');
+    var btn = document.getElementById('submitBtn');
+    btn.disabled = false;
+    btn.textContent = 'Submit Inquiry ✦';
+    document.querySelectorAll('input, textarea').forEach(function(el) { el.value = ''; });
+    document.querySelectorAll('.radio-option').forEach(function(el) { el.classList.remove('selected'); });
+    radioValues = { professional: '', starting: '' };
+    document.getElementById('errorMsg').style.display = 'none';
+  }
+</script>
+</body>
+</html>

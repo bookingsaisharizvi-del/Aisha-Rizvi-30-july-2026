@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "http://aisharizvimakeup.com/*"
+  to = "https://aisharizvimakeup.com/:splat"
+  status = 301
+  force = true
