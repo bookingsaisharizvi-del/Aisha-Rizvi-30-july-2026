@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- 1. Homepage -->
+  <url>
+    <loc>https://aisharizvimakeup.com/</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://aisharizvimakeup.com/logo.jpeg</image:loc>
+      <image:title>Aisha Rizvi Artistry — Luxury Bridal Makeup Artist NJ NY PA</image:title>
+    </image:image>
+  </url>
+
+  <!-- 2. Services Page -->
+  <url>
+    <loc>https://aisharizvimakeup.com/service.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 3. Pricing Page -->
+  <url>
+    <loc>https://aisharizvimakeup.com/price.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 4. Portfolio Gallery -->
+  <url>
+    <loc>https://aisharizvimakeup.com/portfolio.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 5. Booking / Consultation -->
+  <url>
+    <loc>https://aisharizvimakeup.com/booking.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 6. Request Form (for photographers/brands) -->
+  <url>
+    <loc>https://aisharizvimakeup.com/request-form.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 7. Virtual Class Form -->
+  <url>
+    <loc>https://aisharizvimakeup.com/virtual-class-form.html</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>
