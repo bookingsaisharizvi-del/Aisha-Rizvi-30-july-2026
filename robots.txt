@@ -1,0 +1,5 @@
+# robots.txt - aisharizvimakeup.com
+User-agent: *
+Allow: /
+
+Sitemap: https://aisharizvimakeup.com/sitemap.xml

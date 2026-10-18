@@ -1,5 +1,67 @@
 [[redirects]]
-  from = "http://aisharizvimakeup.com/*"
-  to = "https://aisharizvimakeup.com/:splat"
+  from = "/Booking.html"
+  to = "/booking.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Robots.txt"
+  to = "/robots.txt"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Sitemap.xml"
+  to = "/sitemap.xml"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/virtual-class.html"
+  to = "/virtual-class-form.html"
+  status = 301
+  force = true
+
+# Clean URLs for town landing pages
+[[redirects]]
+  from = "/bridal-makeup-edison-nj/"
+  to = "/bridal-makeup-edison-nj.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/bridal-makeup-somerset-nj/"
+  to = "/bridal-makeup-somerset-nj.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/bridal-makeup-long-island-ny/"
+  to = "/bridal-makeup-long-island-ny.html"
+  status = 301
+  force = true
+
+# Clean URLs for service and journal pages
+[[redirects]]
+  from = "/nikaah-makeup-artist-nj/"
+  to = "/nikaah-makeup-artist-nj.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/mehndi-sangeet-makeup-nj/"
+  to = "/mehndi-sangeet-makeup-nj.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/engagement-makeup-ny/"
+  to = "/engagement-makeup-ny.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/bridal-journal/"
+  to = "/bridal-journal.html"
   status = 301
   force = true

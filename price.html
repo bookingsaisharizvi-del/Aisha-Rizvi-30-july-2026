@@ -47,14 +47,14 @@
      Google Local Search + Rich Results + Map listing ke liye
      ══════════════════════════════════════════════════════════════ -->
 
-<!-- Schema 1: BeautyBusiness (Local Business) -->
+<!-- Schema 1: LocalBusiness -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "BeautyBusiness",
+  "@type": "BeautySalon",
   "name": "Aisha Rizvi Artistry",
   "alternateName": "Aisha Rizvi Makeup",
-  "description": "Luxury bridal and event makeup artist serving NJ, NY and PA. Specializing in South Asian bridal makeup, Nikaah, Mehndi, Baraat, party and editorial makeup. Licensed cosmetologist and certified MAC makeup artist with nearly 20 years of experience.",
+  "description": "Luxury bridal and event makeup artist with 20 years of experience, serving NJ, NY and PA. Specializing in South Asian bridal makeup, Nikaah, Mehndi, Baraat, party and editorial makeup.",
   "url": "https://aisharizvimakeup.com/",
   "logo": "https://aisharizvimakeup.com/logo.jpeg",
   "image": "https://aisharizvimakeup.com/logo.jpeg",
@@ -62,7 +62,7 @@
   "email": "Hello@aisharizvimakeup.com",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "1315 Oak Tree Rd Unit C",
+    "streetAddress": "1315 Oak Tree Rd",
     "addressLocality": "Iselin",
     "addressRegion": "NJ",
     "postalCode": "08830",
@@ -77,19 +77,22 @@
     {"@type": "State", "name": "New Jersey"},
     {"@type": "State", "name": "New York"},
     {"@type": "State", "name": "Pennsylvania"},
+    {"@type": "City", "name": "Edison"},
+    {"@type": "City", "name": "Princeton"},
     {"@type": "City", "name": "Iselin"},
     {"@type": "City", "name": "Woodbridge"},
-    {"@type": "City", "name": "Edison"},
-    {"@type": "City", "name": "Newark"},
-    {"@type": "City", "name": "Jersey City"},
-    {"@type": "City", "name": "New York City"}
+    {"@type": "City", "name": "Rahway"},
+    {"@type": "AdministrativeArea", "name": "Queens"},
+    {"@type": "AdministrativeArea", "name": "Brooklyn"},
+    {"@type": "AdministrativeArea", "name": "Long Island"},
+    {"@type": "AdministrativeArea", "name": "Manhattan"}
   ],
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-      "opens": "09:00",
-      "closes": "20:00"
+      "opens": "10:00",
+      "closes": "22:00"
     }
   ],
   "priceRange": "$$$",
@@ -108,16 +111,10 @@
       {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Bridal Hair and Makeup NJ NY PA", "description": "Complete bridal packages from $550 to $10,500 including hair and makeup"}}
     ]
   },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5",
-    "reviewCount": "48",
-    "bestRating": "5"
-  },
   "sameAs": [
     "https://www.instagram.com/aisharizvimakeup/",
     "https://www.facebook.com/aisharizvimakeup",
-    "https://maps.app.goo.gl/JXMTPezr37hTKcwp9"
+    "https://maps.app.goo.gl/Xju8tQnnqBzGWyE39"
   ]
 }
 </script>
@@ -129,9 +126,9 @@
   "@type": "Person",
   "name": "Aisha Rizvi",
   "jobTitle": "Luxury Makeup Artist & Licensed Cosmetologist",
-  "description": "Licensed cosmetologist and certified MAC makeup artist with nearly 20 years of experience. Specialist in South Asian bridal makeup serving NJ, NY and PA.",
+  "description": "Licensed cosmetologist and certified MAC makeup artist specializing in South Asian bridal makeup across NJ, NY and PA.",
   "worksFor": {
-    "@type": "BeautyBusiness",
+    "@type": "BeautySalon",
     "name": "Aisha Rizvi Artistry"
   },
   "url": "https://aisharizvimakeup.com/",
@@ -171,7 +168,7 @@
       "name": "Does Aisha Rizvi specialize in South Asian bridal makeup in New Jersey?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes! Aisha Rizvi is a South Asian bridal makeup specialist in NJ with nearly 20 years of experience. She specializes in Nikaah, Mehndi, and Baraat bridal looks for Pakistani, Indian and other South Asian weddings across NJ, NY and PA."
+        "text": "Yes! Aisha Rizvi specializes in Nikaah, Mehndi, and Baraat bridal looks for Pakistani, Indian and other South Asian weddings across NJ, NY and PA."
       }
     },
     {
@@ -2720,9 +2717,11 @@
   <a href="/price.html"  onclick="closeMobileMenu()">Pricing</a>
   <a href="/portfolio.html"onclick="closeMobileMenu()">Portfolio</a>
   <a href="/request-form.html"onclick="closeMobileMenu()">Request Form</a>
+  <a href="/service-areas.html" onclick="closeMobileMenu()">Service Areas</a>
+  <a href="/bridal-journal.html" onclick="closeMobileMenu()">Bridal Journal</a>
   <a href="/virtual-class-form.html"onclick="closeMobileMenu()">Virtual Class</a>
 
-  <a href="/Booking.html"  class="mobile-menu-book" onclick="closeMobileMenu()">Book Now</a>
+  <a href="/booking.html"  class="mobile-menu-book" onclick="closeMobileMenu()">Book Now</a>
 </div>
 
 <!-- NAV -->
@@ -2740,7 +2739,7 @@
     <li><a href="/virtual-class-form.html">Virtual Class</a></li>
   
   </ul>
-  <a href="/Booking.html" class="nav-book">Book Now</a>
+  <a href="/booking.html" class="nav-book">Book Now</a>
   <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
@@ -2769,7 +2768,7 @@
 <section class="pricing" id="pricing">
   <div class="pricing-header reveal">
     <div class="section-tag">Investment</div>
-    <h2 class="section-heading">Transparent<br><em>Pricing</em></h2>
+    <h1 class="section-heading">Bridal Makeup Packages<br><em>Pricing · NJ · NY · PA</em></h1>
     <p style="font-size:14px; color:var(--text-muted); margin-top:16px; line-height:1.8; max-width:560px; margin-left:auto; margin-right:auto;">Every package is crafted to deliver flawless, lasting beauty. Select a category to explore all services and pricing.</p>
     <div class="pricing-tabs">
       <button class="ptab active" onclick="showPricingTab('bridal', this)">Bridal Packages</button>
@@ -2794,30 +2793,30 @@
     <!-- PARTY -->
     <div class="pricing-panel" id="panel-party">
       <div class="pricing-grid">
-        <div class="price-card reveal"><span class="price-icon">💄</span><div class="price-name">Party Makeup</div><div class="price-amount">$150</div><ul class="price-includes"><li>Full glam party makeup application</li></ul><button class="price-book-btn" onclick="location.href='/Booking.html'">Book Now</button></div>
-        <div class="price-card reveal"><span class="price-icon">💇‍♀️</span><div class="price-name">Party Makeup &amp; Hair</div><div class="price-amount">$300</div><ul class="price-includes"><li>Full glam makeup + professional hairstyling</li></ul><button class="price-book-btn" onclick="location.href='/Booking.html'">Book Now</button></div>
-        <div class="price-card reveal"><span class="price-icon">🍼</span><div class="price-name">Baby Shower Glam</div><div class="price-amount">$300</div><ul class="price-includes"><li>Makeup &amp; Hair styling for the occasion</li></ul><button class="price-book-btn" onclick="location.href='/Booking.html'">Book Now</button></div>
-        <div class="price-card featured reveal"><span class="price-icon">👥</span><div class="price-name">Group Glam (10 ppl)</div><div class="price-amount">$2,600</div><ul class="price-includes"><li>Makeup &amp; Hairstyling for 10 people</li></ul><button class="price-book-btn" onclick="location.href='/Booking.html'">Book Now</button></div>
-        <div class="price-card reveal"><span class="price-icon">💼</span><div class="price-name">Professional / Office</div><div class="price-amount">$275</div><ul class="price-includes"><li>Polished makeup + hairstyling</li><li>For meetings, headshots, corporate events</li></ul><button class="price-book-btn" onclick="location.href='/Booking.html'">Book Now</button></div>
-        <div class="price-card reveal"><span class="price-icon">💒</span><div class="price-name">Groom Touch Up</div><div class="price-amount">$100</div><ul class="price-includes"><li>Grooming touch-up for the groom</li></ul><button class="price-book-btn" onclick="location.href='/Booking.html'">Book Now</button></div>
+        <div class="price-card reveal"><span class="price-icon">💄</span><div class="price-name">Party Makeup</div><div class="price-amount">$150</div><ul class="price-includes"><li>Full glam party makeup application</li></ul><button class="price-book-btn" onclick="location.href='/booking.html'">Book Now</button></div>
+        <div class="price-card reveal"><span class="price-icon">💇‍♀️</span><div class="price-name">Party Makeup &amp; Hair</div><div class="price-amount">$300</div><ul class="price-includes"><li>Full glam makeup + professional hairstyling</li></ul><button class="price-book-btn" onclick="location.href='/booking.html'">Book Now</button></div>
+        <div class="price-card reveal"><span class="price-icon">🍼</span><div class="price-name">Baby Shower Glam</div><div class="price-amount">$300</div><ul class="price-includes"><li>Makeup &amp; Hair styling for the occasion</li></ul><button class="price-book-btn" onclick="location.href='/booking.html'">Book Now</button></div>
+        <div class="price-card featured reveal"><span class="price-icon">👥</span><div class="price-name">Group Glam (10 ppl)</div><div class="price-amount">$2,600</div><ul class="price-includes"><li>Makeup &amp; Hairstyling for 10 people</li></ul><button class="price-book-btn" onclick="location.href='/booking.html'">Book Now</button></div>
+        <div class="price-card reveal"><span class="price-icon">💼</span><div class="price-name">Professional / Office</div><div class="price-amount">$275</div><ul class="price-includes"><li>Polished makeup + hairstyling</li><li>For meetings, headshots, corporate events</li></ul><button class="price-book-btn" onclick="location.href='/booking.html'">Book Now</button></div>
+        <div class="price-card reveal"><span class="price-icon">💒</span><div class="price-name">Groom Touch Up</div><div class="price-amount">$100</div><ul class="price-includes"><li>Grooming touch-up for the groom</li></ul><button class="price-book-btn" onclick="location.href='/booking.html'">Book Now</button></div>
       </div>
     </div>
     <!-- SPECIALTY -->
     <div class="pricing-panel" id="panel-specialty">
       <div class="pricing-grid two-col">
-        <div class="price-card reveal"><span class="price-icon">✨</span><div class="price-name">Signature Model Makeup</div><div class="price-amount">$175</div><ul class="price-includes"><li>High-fashion, editorial-level makeup</li></ul><button class="price-book-btn" onclick="location.href='/Booking.html'">Book Now</button></div>
-        <div class="price-card reveal"><span class="price-icon">📸</span><div class="price-name">Pre-Shoot / Engagement</div><div class="price-amount">$390</div><ul class="price-includes"><li>Makeup + Hair for pre-wedding or engagement shoots</li></ul><button class="price-book-btn" onclick="location.href='/Booking.html'">Book Now</button></div>
-        <div class="price-card reveal"><span class="price-icon">💇</span><div class="price-name">Hairstyling Only</div><div class="price-amount">$150<span>+</span></div><ul class="price-includes"><li>Starting at $150</li><li>Extensions/Wigs/Weft via consultation</li></ul><button class="price-book-btn" onclick="location.href='/Booking.html'">Book Now</button></div>
-        <div class="price-card reveal"><span class="price-icon">👁️</span><div class="price-name">Lash Extensions</div><div class="price-amount">$200<span>/set</span></div><ul class="price-includes"><li>Basic or Volume lash set</li></ul><button class="price-book-btn" onclick="location.href='/Booking.html'">Book Now</button></div>
-        <div class="price-card reveal"><span class="price-icon">💍</span><div class="price-name">Bridal Jewelry Rental</div><div class="price-amount">$100<span>/day</span></div><ul class="price-includes"><li>Luxury jewelry rental</li><li>$50 refundable deposit required</li></ul><button class="price-book-btn" onclick="location.href='/Booking.html'">Inquire</button></div>
+        <div class="price-card reveal"><span class="price-icon">✨</span><div class="price-name">Signature Model Makeup</div><div class="price-amount">$175</div><ul class="price-includes"><li>High-fashion, editorial-level makeup</li></ul><button class="price-book-btn" onclick="location.href='/booking.html'">Book Now</button></div>
+        <div class="price-card reveal"><span class="price-icon">📸</span><div class="price-name">Pre-Shoot / Engagement</div><div class="price-amount">$390</div><ul class="price-includes"><li>Makeup + Hair for pre-wedding or engagement shoots</li></ul><button class="price-book-btn" onclick="location.href='/booking.html'">Book Now</button></div>
+        <div class="price-card reveal"><span class="price-icon">💇</span><div class="price-name">Hairstyling Only</div><div class="price-amount">$150<span>+</span></div><ul class="price-includes"><li>Starting at $150</li><li>Extensions/Wigs/Weft via consultation</li></ul><button class="price-book-btn" onclick="location.href='/booking.html'">Book Now</button></div>
+        <div class="price-card reveal"><span class="price-icon">👁️</span><div class="price-name">Lash Extensions</div><div class="price-amount">$200<span>/set</span></div><ul class="price-includes"><li>Basic or Volume lash set</li></ul><button class="price-book-btn" onclick="location.href='/booking.html'">Book Now</button></div>
+        <div class="price-card reveal"><span class="price-icon">💍</span><div class="price-name">Bridal Jewelry Rental</div><div class="price-amount">$100<span>/day</span></div><ul class="price-includes"><li>Luxury jewelry rental</li><li>$50 refundable deposit required</li></ul><button class="price-book-btn" onclick="location.href='/booking.html'">Inquire</button></div>
       </div>
     </div>
     <!-- HENNA -->
     <div class="pricing-panel" id="panel-henna">
       <div class="pricing-grid two-col">
-        <div class="price-card reveal"><span class="price-icon">🌿</span><div class="price-name">Henna — Per Side</div><div class="price-amount">$15<span>+</span></div><ul class="price-includes"><li>Starting price per side of hand</li><li>Price varies by design complexity</li></ul><button class="price-book-btn" onclick="location.href='/Booking.html'">Book Now</button></div>
-        <div class="price-card reveal"><span class="price-icon">⏱️</span><div class="price-name">Henna — By the Hour</div><div class="price-amount">$250<span>/hr</span></div><ul class="price-includes"><li>Ideal for mehndi nights and group sessions</li></ul><button class="price-book-btn" onclick="location.href='/Booking.html'">Book Now</button></div>
-        <div class="price-card featured reveal"><span class="price-icon">👰</span><div class="price-name">Bridal Henna</div><div class="price-amount">$375<span>+</span></div><ul class="price-includes"><li>Four sides of hands</li><li>Intricate bridal designs</li><li>Consultation required</li></ul><button class="price-book-btn" onclick="location.href='/Booking.html'">Book Consultation</button></div>
+        <div class="price-card reveal"><span class="price-icon">🌿</span><div class="price-name">Henna — Per Side</div><div class="price-amount">$15<span>+</span></div><ul class="price-includes"><li>Starting price per side of hand</li><li>Price varies by design complexity</li></ul><button class="price-book-btn" onclick="location.href='/booking.html'">Book Now</button></div>
+        <div class="price-card reveal"><span class="price-icon">⏱️</span><div class="price-name">Henna — By the Hour</div><div class="price-amount">$250<span>/hr</span></div><ul class="price-includes"><li>Ideal for mehndi nights and group sessions</li></ul><button class="price-book-btn" onclick="location.href='/booking.html'">Book Now</button></div>
+        <div class="price-card featured reveal"><span class="price-icon">👰</span><div class="price-name">Bridal Henna</div><div class="price-amount">$375<span>+</span></div><ul class="price-includes"><li>Four sides of hands</li><li>Intricate bridal designs</li><li>Consultation required</li></ul><button class="price-book-btn" onclick="location.href='/booking.html'">Book Consultation</button></div>
       </div>
     </div>
     <!-- TRAINING -->
@@ -3054,7 +3053,7 @@
         <p><strong style="color:var(--cream)">3. RESCHEDULING</strong><br>
         One rescheduling is permitted with 14+ days notice, subject to availability. A $50 rescheduling fee applies for changes within 14 days.</p>
         <p><strong style="color:var(--cream)">4. TRAVEL</strong><br>
-        Travel fees may apply for locations outside a 20km radius. Aisha Rizvi Artistry will confirm any applicable travel fees upon booking confirmation.</p>
+        Travel fees may apply for locations outside a 20-mile radius. Aisha Rizvi Artistry will confirm any applicable travel fees upon booking confirmation.</p>
         <p><strong style="color:var(--cream)">5. TIMELINE &amp; DELAYS</strong><br>
         Client is responsible for ensuring all members of the party are ready on schedule. Delays caused by the client may result in a reduced service or additional charges.</p>
         <p><strong style="color:var(--cream)">6. ALLERGIES &amp; SKIN CONDITIONS</strong><br>
@@ -3169,23 +3168,15 @@
           <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;color:var(--gold);margin-bottom:20px;font-weight:400;">BUSINESS HOURS</div>
           <div style="display:flex;flex-direction:column;gap:0;border:1px solid rgba(201,169,110,0.12);">
             <div style="display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(201,169,110,0.08);font-family:'Didact Gothic',sans-serif;font-size:12px;">
-              <span style="color:var(--text-muted);">Monday – Friday</span>
-              <span style="color:var(--cream);">10:00 AM – 7:00 PM</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(201,169,110,0.08);font-family:'Didact Gothic',sans-serif;font-size:12px;">
-              <span style="color:var(--text-muted);">Saturday</span>
-              <span style="color:var(--cream);">9:00 AM – 8:00 PM</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(201,169,110,0.08);font-family:'Didact Gothic',sans-serif;font-size:12px;">
-              <span style="color:var(--text-muted);">Sunday</span>
-              <span style="color:var(--cream);">10:00 AM – 6:00 PM</span>
+              <span style="color:var(--text-muted);">Monday – Sunday</span>
+              <span style="color:var(--cream);">10:00 am &ndash; 10:00 pm</span>
             </div>
             <div style="display:flex;justify-content:space-between;padding:12px 16px;font-family:'Didact Gothic',sans-serif;font-size:11px;">
               <span style="color:var(--text-muted);">Event days</span>
               <span style="color:var(--gold);">By Appointment</span>
             </div>
           </div>
-          <p style="font-family:'Didact Gothic',sans-serif;font-size:11px;color:var(--text-muted);margin-top:12px;line-height:1.6;">* Hours may vary on holidays &amp; event weekends. Book a consultation to confirm availability.</p>
+          <p style="font-family:'Didact Gothic',sans-serif;font-size:11px;color:var(--text-muted);margin-top:12px;line-height:1.6;">Appointments are required. Contact Aisha to confirm availability.</p>
         </div>
 
       </div>
@@ -3195,14 +3186,15 @@
         <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;color:var(--gold);margin-bottom:20px;font-weight:400;">OUR LOCATION</div>
         <div style="position:relative;width:100%;padding-bottom:65%;border:1px solid rgba(201,169,110,0.2);overflow:hidden;">
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.11976397304603!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s"
+            src="https://www.google.com/maps?q=1315+Oak+Tree+Rd%2C+Iselin%2C+NJ+08830&output=embed"
+            title="Map showing Aisha Rizvi Artistry in Iselin, New Jersey"
             style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;filter:invert(0.9) hue-rotate(180deg) saturate(0.3) brightness(0.85);"
             allowfullscreen="" 
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade">
           </iframe>
         </div>
-        <a href="https://maps.app.goo.gl/poQGF4f1Vhy38tyn7" target="_blank" 
+        <a href="https://maps.app.goo.gl/Xju8tQnnqBzGWyE39" target="_blank" 
            style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:14px;padding:14px;border:1px solid rgba(201,169,110,0.3);font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;color:var(--gold);text-decoration:none;text-transform:uppercase;transition:all 0.3s;"
            onmouseover="this.style.background='rgba(201,169,110,0.07)'" onmouseout="this.style.background='none'">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -3210,7 +3202,7 @@
         </a>
         
         <!-- Google Profile Button -->
-        <a href="https://maps.app.goo.gl/poQGF4f1Vhy38tyn7" target="_blank"
+        <a href="https://maps.app.goo.gl/Xju8tQnnqBzGWyE39" target="_blank"
            style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:10px;padding:14px;background:rgba(201,169,110,0.07);border:1px solid rgba(201,169,110,0.2);font-family:'Didact Gothic',sans-serif;font-size:11px;letter-spacing:2px;color:var(--cream);text-decoration:none;text-transform:uppercase;transition:all 0.3s;"
            onmouseover="this.style.background='rgba(201,169,110,0.14)'" onmouseout="this.style.background='rgba(201,169,110,0.07)'">
           ⭐ View Google Reviews &amp; Profile
@@ -3270,6 +3262,14 @@
         <li><a href="#portfolio">Portfolio</a></li>
         <li><a href="#testimonials">Reviews</a></li>
         <li><a href="#process">Our Process</a></li>
+        <li><a href="/service-areas.html">Service Areas</a></li>
+        <li><a href="/bridal-makeup-edison-nj.html">Bridal Makeup Edison NJ</a></li>
+        <li><a href="/bridal-makeup-somerset-nj.html">Bridal Makeup Somerset NJ</a></li>
+        <li><a href="/bridal-makeup-long-island-ny.html">Bridal Makeup Long Island NY</a></li>
+        <li><a href="/nikaah-makeup-artist-nj.html">Nikaah Makeup NJ</a></li>
+        <li><a href="/mehndi-sangeet-makeup-nj.html">Mehndi &amp; Sangeet Makeup NJ</a></li>
+        <li><a href="/engagement-makeup-ny.html">Engagement Makeup NY</a></li>
+        <li><a href="/bridal-journal.html">Bridal Journal</a></li>
         <li><a href="#booking">Book Now</a></li>
       </ul>
     </div>
@@ -3334,7 +3334,8 @@
     function buildLightbox() {
       var items = document.querySelectorAll('#portfolioGrid .port-item');
       items.forEach(function(item, idx) {
-        images[idx] = item.querySelector('img').src;
+        var image = item.querySelector('img');
+        images[idx] = { src: image.src, alt: image.alt };
         item.addEventListener('click', function() { openLb(idx); });
       });
     }
@@ -3347,7 +3348,7 @@
       lb.innerHTML =
         '<button class="port-lightbox-close" title="Close">&#10005;</button>' +
         '<button class="port-lightbox-prev" title="Prev">&#8592;</button>' +
-        '<img src="' + images[idx] + '" alt="Portfolio">' +
+        '<img src="' + images[idx].src + '" alt="' + images[idx].alt.replace(/"/g, '&quot;') + '">' +
         '<button class="port-lightbox-next" title="Next">&#8594;</button>';
       document.body.appendChild(lb);
       document.body.style.overflow = 'hidden';
@@ -3366,7 +3367,10 @@
     function navigate(dir) {
       currentIdx = (currentIdx + dir + images.length) % images.length;
       var lb = document.getElementById('portLightbox');
-      if (lb) lb.querySelector('img').src = images[currentIdx];
+      if (lb) {
+        lb.querySelector('img').src = images[currentIdx].src;
+        lb.querySelector('img').alt = images[currentIdx].alt;
+      }
     }
 
     document.addEventListener('keydown', function(e) {
@@ -3762,6 +3766,7 @@
 
   // ── CANVAS HERO LINES ──
   const canvas = document.getElementById('heroCanvas');
+  if (canvas) {
   const ctx = canvas.getContext('2d');
   function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
   resizeCanvas();
@@ -3795,6 +3800,7 @@
     requestAnimationFrame(drawCanvas);
   }
   drawCanvas();
+  }
 
   // ── HERO SLIDER ──
   var sliderSlides = document.querySelectorAll('.hero-slide');
