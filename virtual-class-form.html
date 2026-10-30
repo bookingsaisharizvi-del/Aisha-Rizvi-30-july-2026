@@ -279,6 +279,7 @@
     .radio-group { flex-direction: column; }
   }
 </style>
+  <link rel="stylesheet" href="/sticky-cta.css">
 </head>
 <body>
 
@@ -486,5 +487,12 @@
     document.getElementById('errorMsg').style.display = 'none';
   }
 </script>
+<!-- Sticky mobile booking bar -->
+<div class="sticky-cta" aria-label="Quick booking actions">
+  <a class="cta-book" href="/booking.html#booking">Book Now</a>
+  <!-- CONSULT-CALL-LINK-SLOT: when Aisha sends her 15-minute consult booking link,
+       replace the href below with it. Nothing else needs to change. -->
+  <a class="cta-call" href="tel:+16314081708">Free 15-Min<br>Consult Call</a>
+</div>
 </body>
 </html>

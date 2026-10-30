@@ -2459,27 +2459,6 @@
     font-size: 18px;
   }
 
-  /* ─── PAYPAL BUTTON ─── */
-  .btn-paypal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    background: #0070ba;
-    color: white;
-    font-family: 'Cinzel', serif;
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 18px;
-    margin-bottom: 12px;
-    transition: background 0.3s, transform 0.2s;
-    border-radius: 2px;
-  }
-  .btn-paypal:hover { background: #005a9e; transform: translateY(-1px); }
-
   .btn-paid-confirm {
     width: 100%;
     background: none;
@@ -2697,6 +2676,7 @@
   }
 
 </style>
+  <link rel="stylesheet" href="/sticky-cta.css">
 </head>
 <body>
 
@@ -3045,7 +3025,7 @@
       <div class="contract-terms">
         <h4>CONTRACT TERMS &amp; CONDITIONS</h4>
         <p><strong style="color:var(--cream)">1. DEPOSIT &amp; PAYMENT</strong><br>
-        A non-refundable retainer of 50% is required to secure your booking date. The remaining balance is due on or before the event date. Accepted payments: e-Transfer, Cash, Zelle.</p>
+        A non-refundable retainer of 50% is required to secure your booking date. The retainer is paid by Venmo (@aishahmakeup) or Zelle (631) 408-1708. The remaining balance is paid in cash on the event day.</p>
         <p><strong style="color:var(--cream)">2. CANCELLATION POLICY</strong><br>
         Cancellations made 30+ days before the event: deposit is forfeited but no further charge. Cancellations within 14 days: 75% of total is due. Cancellations within 48 hours or no-shows: 100% of total is due.</p>
         <p><strong style="color:var(--cream)">3. RESCHEDULING</strong><br>
@@ -3572,7 +3552,7 @@
   function exportCSV() {
     var clients = getClients();
     if (!clients.length) { showToast('No clients to export.', 'error'); return; }
-    var header = ['Name','Email','Phone','Service','Location','Preferred Date','Preferred Time','Deposit Status','PayPal Transaction ID','Notes','Added On'];
+    var header = ['Name','Email','Phone','Service','Location','Preferred Date','Preferred Time','Deposit Status','Deposit Reference','Notes','Added On'];
     var rows = clients.map(function(c) {
       return [c.name,c.email,c.phone,c.service,c.location,c.date,c.time,c.depositStatus,c.transactionId,c.message,c.addedOn].map(function(v){ return '"'+(v||'').replace(/"/g,'""')+'"'; }).join(',');
     });
@@ -3608,7 +3588,7 @@
       showToast('⚠ Please fill in Name, Email & Service type.', 'error'); return;
     }
 
-    var dateStr = 'To be confirmed via Calendly';
+    var dateStr = 'To be confirmed by Aisha';
     var fullName = firstName + (lastName ? ' ' + lastName : '');
 
     _lastBookingData = {
@@ -3659,100 +3639,6 @@
         })
       });
     } catch(ex) {}
-  }
-
-  function onDepositPaid() {
-    showToast('PayPal opened in a new tab. Return here after payment.', 'success');
-  }
-
-  function goToCalendlyStep() {
-    afterPaypalReturn();
-  }
-
-  function validateTxnId() {
-    var val = document.getElementById('txnInput').value.trim();
-    var btn = document.getElementById('confirmDepositBtn');
-    var err = document.getElementById('txnError');
-    // PayPal transaction IDs are alphanumeric, min 10 chars
-    var valid = val.length >= 10 && /^[A-Z0-9]+$/i.test(val);
-    if (valid) {
-      btn.disabled = false;
-      btn.style.opacity = '1';
-      btn.style.cursor = 'pointer';
-      err.style.display = 'none';
-    } else {
-      btn.disabled = true;
-      btn.style.opacity = '0.4';
-      btn.style.cursor = 'not-allowed';
-      err.style.display = val.length > 0 ? 'block' : 'none';
-    }
-  }
-
-  function afterPaypalReturn() {
-    var txnId = document.getElementById('txnInput').value.trim();
-    if (!txnId || txnId.length < 10) {
-      showToast('⚠ Please enter your PayPal Transaction ID.', 'error');
-      return;
-    }
-    // Save transaction ID with client data
-    if (_lastBookingData && _lastBookingData.id) {
-      _lastBookingData.transactionId = txnId;
-      markDepositPaid(_lastBookingData.id, txnId);
-      // Also send transaction ID via EmailJS notification
-      if (typeof emailjs !== 'undefined' && emailjs.send) {
-        try {
-          emailjs.send('service_whf9x9i', 'template_ulykuq6', {
-            client_name: _lastBookingData.name,
-            client_email: _lastBookingData.email,
-            client_phone: _lastBookingData.phone || '',
-            service_type: _lastBookingData.service || '',
-            event_location: _lastBookingData.location || '',
-            preferred_date: 'To be confirmed via Calendly',
-            preferred_time: 'To be confirmed via Calendly',
-            message: (_lastBookingData.message || '') + '\n\n💳 PayPal Transaction ID: ' + txnId
-          });
-        } catch(ex) {}
-      }
-      try {
-        fetch('https://script.google.com/macros/s/AKfycbwCu9IGebSCcSiE95l83UtsdYB592Wg70Ge1GVbSRqhOaZ9HS2ebeLW4uC0iaKldizH/exec', {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: _lastBookingData.name,
-            email: _lastBookingData.email,
-            phone: _lastBookingData.phone || '',
-            service: _lastBookingData.service || '',
-            location: _lastBookingData.location || '',
-            date: 'To be confirmed via Calendly',
-            time: 'To be confirmed via Calendly',
-            message: (_lastBookingData.message || '') + '\nPayPal Transaction ID: ' + txnId,
-            transactionId: txnId,
-            depositStatus: 'paid'
-          })
-        });
-      } catch(ex) {}
-    }
-    // Show date selection step
-    document.getElementById('bookingPayStep').style.display = 'none';
-    document.getElementById('afterDepositCalendly').style.display = 'block';
-    document.getElementById('afterDepositCalendly').scrollIntoView({ behavior: 'smooth', block: 'center' });
-    showToast('✓ Payment verified! Now select your date & time.', 'success');
-  }
-
-  function openCalendlyFinal() {
-    Calendly.initPopupWidget({ url: 'https://calendly.com/bookings-aisharizvi/30min' });
-    window.addEventListener('message', function handler(e) {
-      if (e.data && e.data.event && e.data.event === 'calendly.event_scheduled') {
-        window.removeEventListener('message', handler);
-        setTimeout(function() {
-          document.getElementById('afterDepositCalendly').style.display = 'none';
-          document.getElementById('bookingSuccess').style.display = 'block';
-          document.getElementById('bookingSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
-          showToast('✦ All done! Aisha will confirm within 24 hours.', 'success');
-        }, 800);
-      }
-    });
   }
 
   function showToast(msg, type) {
@@ -4053,39 +3939,15 @@
   }
 
 </script>
-<!-- CALENDLY WIDGET SCRIPT -->
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 <script>
-  function openCalendly() {
-    Calendly.initPopupWidget({ url: 'https://calendly.com/bookings-aisharizvi/30min' });
-    return false;
-  }
-
-  function openCalendlyAndDeposit() {
-    Calendly.initPopupWidget({ url: 'https://calendly.com/bookings-aisharizvi/30min' });
-    // Listen for Calendly event scheduled
-    window.addEventListener('message', function handler(e) {
-      if (e.data && e.data.event && e.data.event === 'calendly.event_scheduled') {
-        window.removeEventListener('message', handler);
-        // Close calendly popup and show deposit step
-        setTimeout(function() {
-          document.getElementById('calendlyStep').style.display = 'none';
-          document.getElementById('bookingForm').style.display = 'none';
-          document.getElementById('calendlyDepositStep').style.display = 'block';
-          // Scroll to deposit step
-          document.getElementById('calendlyDepositStep').scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 1000);
-      }
-    });
-  }
-
-  function afterCalendlyDeposit() {
-    document.getElementById('calendlyDepositStep').style.display = 'none';
-    document.getElementById('calendlySuccess').style.display = 'block';
-    showToast('✦ Booking confirmed! Aisha will be in touch soon.', 'success');
-  }
 </script>
 
+<!-- Sticky mobile booking bar -->
+<div class="sticky-cta" aria-label="Quick booking actions">
+  <a class="cta-book" href="/booking.html#booking">Book Now</a>
+  <!-- CONSULT-CALL-LINK-SLOT: when Aisha sends her 15-minute consult booking link,
+       replace the href below with it. Nothing else needs to change. -->
+  <a class="cta-call" href="tel:+16314081708">Free 15-Min<br>Consult Call</a>
+</div>
 </body>
 </html>

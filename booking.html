@@ -2458,26 +2458,21 @@
     font-size: 18px;
   }
 
-  /* ─── PAYPAL BUTTON ─── */
-  .btn-paypal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    background: #0070ba;
-    color: white;
+  /* ─── DEPOSIT COPY BUTTON ─── */
+  .deposit-copy-btn {
+    background: none;
+    border: 1px solid rgba(201,169,110,0.45);
+    color: var(--gold);
     font-family: 'Cinzel', serif;
-    font-size: 11px;
-    letter-spacing: 3px;
+    font-size: 9px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    text-decoration: none;
-    padding: 18px;
-    margin-bottom: 12px;
-    transition: background 0.3s, transform 0.2s;
-    border-radius: 2px;
+    padding: 7px 12px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s;
   }
-  .btn-paypal:hover { background: #005a9e; transform: translateY(-1px); }
+  .deposit-copy-btn:hover { background: var(--gold); color: var(--deep); }
 
   .btn-paid-confirm {
     width: 100%;
@@ -2696,6 +2691,7 @@
   }
 
 </style>
+  <link rel="stylesheet" href="/sticky-cta.css">
 </head>
 <body>
 
@@ -2885,131 +2881,71 @@
         <div class="deposit-notice">
           <div class="deposit-notice-icon">💳</div>
           <div class="deposit-notice-text">
-            <div class="deposit-notice-title">$50 Booking Deposit Required</div>
-            <div class="deposit-notice-desc">A non-refundable $50 deposit confirms your consultation. After submitting, you will be directed to pay via PayPal — then select your date on Calendly.</div>
+            <div class="deposit-notice-title">A Deposit Secures Your Date</div>
+            <div class="deposit-notice-desc">A non-refundable deposit confirms your booking. After you submit this form, you will see exactly where to send it — Venmo or Zelle. Aisha confirms your date personally once the deposit arrives.</div>
           </div>
         </div>
 
-        <button class="btn-submit" onclick="submitBooking()">Continue to Payment →</button>
-        <p class="form-note">★ Secure payment via PayPal · Response within 24 hours · By appointment only</p>
+        <button class="btn-submit" onclick="submitBooking()">Submit Booking Request →</button>
+        <p class="form-note">★ Deposit by Venmo or Zelle · Response within 24 hours · By appointment only</p>
       </div>
 
-      <!-- STEP 2: PAYMENT -->
+      <!-- STEP 2: DEPOSIT INSTRUCTIONS -->
       <div id="bookingPayStep" style="display:none; padding:32px 0;">
         <!-- Step indicator -->
         <div style="display:flex; align-items:center; gap:0; margin-bottom:32px;">
           <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
-            <div style="width:28px; height:28px; border-radius:50%; background:rgba(201,169,110,0.25); border:1px solid var(--gold); color:var(--gold); font-family:'Cinzel',serif; font-size:11px; display:flex; align-items:center; justify-content:center;">✓</div>
+            <div style="width:28px; height:28px; border-radius:50%; background:rgba(201,169,110,0.25); border:1px solid var(--gold); color:var(--gold); font-family:'Cinzel',serif; font-size:11px; display:flex; align-items:center; justify-content:center;">&#10003;</div>
             <div style="font-size:9px; letter-spacing:1px; color:var(--text-muted); text-transform:uppercase; white-space:nowrap;">Your Details</div>
           </div>
           <div style="flex:1; height:1px; background:var(--gold); margin-bottom:16px; opacity:0.4;"></div>
           <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
             <div style="width:28px; height:28px; border-radius:50%; background:var(--gold); color:var(--deep); font-family:'Cinzel',serif; font-size:11px; font-weight:600; display:flex; align-items:center; justify-content:center;">2</div>
-            <div style="font-size:9px; letter-spacing:1px; color:var(--gold); text-transform:uppercase; white-space:nowrap;">Deposit</div>
-          </div>
-          <div style="flex:1; height:1px; background:rgba(201,169,110,0.25); margin-bottom:16px;"></div>
-          <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
-            <div style="width:28px; height:28px; border-radius:50%; border:1px solid rgba(201,169,110,0.4); color:var(--text-muted); font-family:'Cinzel',serif; font-size:11px; display:flex; align-items:center; justify-content:center;">3</div>
-            <div style="font-size:9px; letter-spacing:1px; color:var(--text-muted); text-transform:uppercase; white-space:nowrap;">Book Date</div>
+            <div style="font-size:9px; letter-spacing:1px; color:var(--gold); text-transform:uppercase; white-space:nowrap;">Send Deposit</div>
           </div>
         </div>
 
         <div style="text-align:center; margin-bottom:28px;">
-          <div style="font-size:36px; margin-bottom:10px;">💳</div>
-          <div class="form-title" style="margin-bottom:6px;">Complete Your $50 Deposit</div>
-          <p style="font-size:13px; color:var(--text-muted); line-height:1.7;">Hi <strong id="payClientName" style="color:var(--cream);"></strong>! Your details are saved. Pay the deposit below to secure your spot.</p>
+          <div style="font-size:40px; margin-bottom:10px;">&#10026;</div>
+          <div class="form-title" style="margin-bottom:6px;">Request Received</div>
+          <p style="font-size:13px; color:var(--text-muted); line-height:1.7;">Thank you, <strong id="payClientName" style="color:var(--cream);"></strong>. Your details are with Aisha. One step left to secure your date.</p>
+          <p style="font-size:12px; color:var(--text-muted); margin-top:6px;" id="savedBookingInfo">&mdash;</p>
+        </div>
+
+        <!-- The deposit instruction Aisha asked for, word for word -->
+        <div class="deposit-notice" style="margin-bottom:24px;">
+          <div class="deposit-notice-icon">&#128176;</div>
+          <div class="deposit-notice-text">
+            <div class="deposit-notice-title">Send Your $50 Deposit</div>
+            <div class="deposit-notice-desc">Send your deposit via Venmo @aishahmakeup or Zelle (631) 408-1708 &mdash; your date is secured once the deposit arrives.</div>
+          </div>
         </div>
 
         <div class="deposit-step-box" style="margin-bottom:24px;">
           <div class="deposit-step-row">
-            <div class="deposit-step-num">1</div>
+            <div class="deposit-step-num">V</div>
             <div class="deposit-step-info">
-              <div class="deposit-step-label">Your Details Saved</div>
-              <div class="deposit-step-sublabel" id="savedBookingInfo">—</div>
+              <div class="deposit-step-label">Venmo</div>
+              <div class="deposit-step-sublabel">@aishahmakeup</div>
             </div>
-            <div class="deposit-step-check">✓</div>
+            <button type="button" class="deposit-copy-btn" onclick="copyPayDetail('@aishahmakeup', this)">Copy</button>
           </div>
           <div class="deposit-step-row">
-            <div class="deposit-step-num">2</div>
+            <div class="deposit-step-num">Z</div>
             <div class="deposit-step-info">
-              <div class="deposit-step-label">Pay $50 Non-Refundable Deposit</div>
-              <div class="deposit-step-sublabel">Click below — PayPal opens in new tab</div>
+              <div class="deposit-step-label">Zelle</div>
+              <div class="deposit-step-sublabel">(631) 408-1708</div>
             </div>
-          </div>
-          <div class="deposit-step-row">
-            <div class="deposit-step-num">3</div>
-            <div class="deposit-step-info">
-              <div class="deposit-step-label">Enter PayPal Transaction ID</div>
-              <div class="deposit-step-sublabel">Calendly unlocks after the ID is submitted</div>
-            </div>
+            <button type="button" class="deposit-copy-btn" onclick="copyPayDetail('6314081708', this)">Copy</button>
           </div>
         </div>
 
-        <a href="https://www.paypal.com/paypalme/AishaRizvi/50" target="_blank" class="btn-paypal" onclick="onDepositPaid()">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="white" style="flex-shrink:0"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c1.316 5.07-1.903 7.926-7.076 7.926H11.52l-1.285 8.143H7.076l1.285-8.143H6.2l1.285-8.143h7.46c1.903 0 3.3.543 3.96 1.81.318.595.446 1.27.317 2.09z"/></svg>
-          Pay $50 Deposit via PayPal
-        </a>
-
-        <div class="payment-verification">
-          <label class="form-label" for="txnInput">PayPal Transaction ID *</label>
-          <input type="text" class="form-input" id="txnInput" placeholder="Example: 7AB12345CD678901E" oninput="validateTxnId()">
-          <div class="verification-help">After paying, copy the transaction ID from your PayPal receipt/email and paste it here. Aisha will manually match it in PayPal.</div>
-          <div class="verification-error" id="txnError">Please enter a valid PayPal transaction ID, minimum 10 letters/numbers.</div>
-        </div>
-
-        <button onclick="afterPaypalReturn()" class="btn-paid-confirm" id="confirmDepositBtn" disabled>
-          Submit Transaction ID & Select My Date
-        </button>
-        <p style="font-size:10px; color:var(--text-muted); text-align:center; margin-top:12px; letter-spacing:0.5px;">Having trouble? Email: Hello@aisharizvimakeup.com or WhatsApp: +1 (631) 408-1708</p>
-      </div>
-
-      <!-- STEP 3: SELECT DATE ON CALENDLY -->
-      <div id="afterDepositCalendly" style="display:none; padding:32px 0;">
-        <!-- Step indicator -->
-        <div style="display:flex; align-items:center; gap:0; margin-bottom:32px;">
-          <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
-            <div style="width:28px; height:28px; border-radius:50%; background:rgba(201,169,110,0.25); border:1px solid var(--gold); color:var(--gold); font-family:'Cinzel',serif; font-size:11px; display:flex; align-items:center; justify-content:center;">✓</div>
-            <div style="font-size:9px; letter-spacing:1px; color:var(--text-muted); text-transform:uppercase; white-space:nowrap;">Your Details</div>
-          </div>
-          <div style="flex:1; height:1px; background:var(--gold); margin-bottom:16px; opacity:0.4;"></div>
-          <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
-            <div style="width:28px; height:28px; border-radius:50%; background:rgba(201,169,110,0.25); border:1px solid var(--gold); color:var(--gold); font-family:'Cinzel',serif; font-size:11px; display:flex; align-items:center; justify-content:center;">✓</div>
-            <div style="font-size:9px; letter-spacing:1px; color:var(--text-muted); text-transform:uppercase; white-space:nowrap;">Deposit</div>
-          </div>
-          <div style="flex:1; height:1px; background:var(--gold); margin-bottom:16px; opacity:0.4;"></div>
-          <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
-            <div style="width:28px; height:28px; border-radius:50%; background:var(--gold); color:var(--deep); font-family:'Cinzel',serif; font-size:11px; font-weight:600; display:flex; align-items:center; justify-content:center;">3</div>
-            <div style="font-size:9px; letter-spacing:1px; color:var(--gold); text-transform:uppercase; white-space:nowrap;">Book Date</div>
-          </div>
-        </div>
-
-        <div style="text-align:center; margin-bottom:28px;">
-          <div style="font-size:40px; margin-bottom:10px;">🎉</div>
-          <div class="form-title" style="margin-bottom:6px;">Deposit Confirmed!</div>
-          <p style="font-size:13px; color:var(--text-muted); line-height:1.7; margin-bottom:0;">Now choose your preferred consultation date &amp; time with Aisha.</p>
-        </div>
-        <button onclick="openCalendlyFinal()" style="
-          display:flex; align-items:center; justify-content:center; gap:12px;
-          background:var(--gold); border:none; color:var(--deep);
-          font-family:'Cinzel',serif; font-size:12px; letter-spacing:3px;
-          text-transform:uppercase; padding:20px 28px; cursor:pointer;
-          width:100%; font-weight:600; transition:opacity 0.2s;
-        " onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
-          📅 Select Your Date &amp; Time on Calendly
-        </button>
-        <p style="font-size:11px; color:var(--text-muted); text-align:center; margin-top:12px; letter-spacing:1px;">Synced with Google Calendar · Aisha will confirm within 24 hours</p>
-      </div>
-
-      <!-- STEP 4: SUCCESS -->
-      <div class="booking-success" id="bookingSuccess">
-        <span class="success-icon">✦</span>
-        <div class="success-title">You're All Set!</div>
-        <p class="success-msg">Your consultation is booked &amp; deposit received. Aisha will personally confirm within 24 hours.<br><br>
-        <span style="color:var(--gold);">Check your email for confirmation details.</span></p>
-        <div style="margin-top:28px; padding:20px; border:1px solid rgba(201,169,110,0.2); background:rgba(201,169,110,0.05);">
+        <div style="margin-top:4px; padding:20px; border:1px solid rgba(201,169,110,0.2); background:rgba(201,169,110,0.05);">
           <div style="font-size:10px; letter-spacing:3px; color:var(--gold); margin-bottom:8px; text-transform:uppercase;">What Happens Next</div>
-          <p style="font-size:12px; color:var(--text-muted); line-height:1.7;">Aisha will review your booking and send a confirmation email with consultation details and what to prepare.</p>
+          <p style="font-size:12px; color:var(--text-muted); line-height:1.7; margin:0;">Once your deposit arrives, Aisha will personally contact you to confirm your date and talk through your look. The remaining balance is paid in cash on the event day. The $50 deposit is non-refundable.</p>
         </div>
+
+        <p style="font-size:10px; color:var(--text-muted); text-align:center; margin-top:16px; letter-spacing:0.5px;">Questions? Email Hello@aisharizvimakeup.com or WhatsApp +1 (631) 408-1708</p>
       </div>
     </div>
   </div>
@@ -3233,7 +3169,7 @@
       <div class="contract-terms">
         <h4>CONTRACT TERMS &amp; CONDITIONS</h4>
         <p><strong style="color:var(--cream)">1. DEPOSIT &amp; PAYMENT</strong><br>
-        A non-refundable retainer of 50% is required to secure your booking date. The remaining balance is due on or before the event date. Accepted payments: e-Transfer, Cash, Zelle.</p>
+        A non-refundable retainer of 50% is required to secure your booking date. The retainer is paid by Venmo (@aishahmakeup) or Zelle (631) 408-1708. The remaining balance is paid in cash on the event day.</p>
         <p><strong style="color:var(--cream)">2. CANCELLATION POLICY</strong><br>
         Cancellations made 30+ days before the event: deposit is forfeited but no further charge. Cancellations within 14 days: 75% of total is due. Cancellations within 48 hours or no-shows: 100% of total is due.</p>
         <p><strong style="color:var(--cream)">3. RESCHEDULING</strong><br>
@@ -3760,7 +3696,7 @@
   function exportCSV() {
     var clients = getClients();
     if (!clients.length) { showToast('No clients to export.', 'error'); return; }
-    var header = ['Name','Email','Phone','Service','Location','Preferred Date','Preferred Time','Deposit Status','PayPal Transaction ID','Notes','Added On'];
+    var header = ['Name','Email','Phone','Service','Location','Preferred Date','Preferred Time','Deposit Status','Deposit Reference','Notes','Added On'];
     var rows = clients.map(function(c) {
       return [c.name,c.email,c.phone,c.service,c.location,c.date,c.time,c.depositStatus,c.transactionId,c.message,c.addedOn].map(function(v){ return '"'+(v||'').replace(/"/g,'""')+'"'; }).join(',');
     });
@@ -3796,7 +3732,7 @@
       showToast('⚠ Please fill in Name, Email & Service type.', 'error'); return;
     }
 
-    var dateStr = 'To be confirmed via Calendly';
+    var dateStr = 'To be confirmed by Aisha';
     var fullName = firstName + (lastName ? ' ' + lastName : '');
 
     _lastBookingData = {
@@ -3813,10 +3749,10 @@
     // Show payment step
     document.getElementById('bookingForm').style.display = 'none';
     document.getElementById('bookingPayStep').style.display = 'block';
-    document.getElementById('payClientName').textContent = fullName;
+    document.getElementById('payClientName').textContent = firstName;
     document.getElementById('savedBookingInfo').textContent = fullName + ' · ' + service;
 
-    showToast('✓ Details saved! Complete your $50 deposit to confirm.', 'success');
+    showToast('✓ Request received! Send your deposit to secure the date.', 'success');
 
     // Send email via EmailJS if configured
     if (typeof emailjs !== 'undefined' && emailjs.send) {
@@ -3849,98 +3785,21 @@
     } catch(ex) {}
   }
 
-  function onDepositPaid() {
-    showToast('PayPal opened in a new tab. Return here after payment.', 'success');
-  }
-
-  function goToCalendlyStep() {
-    afterPaypalReturn();
-  }
-
-  function validateTxnId() {
-    var val = document.getElementById('txnInput').value.trim();
-    var btn = document.getElementById('confirmDepositBtn');
-    var err = document.getElementById('txnError');
-    // PayPal transaction IDs are alphanumeric, min 10 chars
-    var valid = val.length >= 10 && /^[A-Z0-9]+$/i.test(val);
-    if (valid) {
-      btn.disabled = false;
-      btn.style.opacity = '1';
-      btn.style.cursor = 'pointer';
-      err.style.display = 'none';
+  // Copies a payment handle to the clipboard on the deposit step.
+  function copyPayDetail(value, btn) {
+    var done = function () {
+      var old = btn.textContent;
+      btn.textContent = 'Copied';
+      setTimeout(function () { btn.textContent = old; }, 1600);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(value).then(done, function () { done(); });
     } else {
-      btn.disabled = true;
-      btn.style.opacity = '0.4';
-      btn.style.cursor = 'not-allowed';
-      err.style.display = val.length > 0 ? 'block' : 'none';
+      var t = document.createElement('textarea');
+      t.value = value; document.body.appendChild(t); t.select();
+      try { document.execCommand('copy'); } catch (ex) {}
+      document.body.removeChild(t); done();
     }
-  }
-
-  function afterPaypalReturn() {
-    var txnId = document.getElementById('txnInput').value.trim();
-    if (!txnId || txnId.length < 10) {
-      showToast('⚠ Please enter your PayPal Transaction ID.', 'error');
-      return;
-    }
-    // Save transaction ID with client data
-    if (_lastBookingData && _lastBookingData.id) {
-      _lastBookingData.transactionId = txnId;
-      markDepositPaid(_lastBookingData.id, txnId);
-      // Also send transaction ID via EmailJS notification
-      if (typeof emailjs !== 'undefined' && emailjs.send) {
-        try {
-          emailjs.send('service_whf9x9i', 'template_ulykuq6', {
-            client_name: _lastBookingData.name,
-            client_email: _lastBookingData.email,
-            client_phone: _lastBookingData.phone || '',
-            service_type: _lastBookingData.service || '',
-            event_location: _lastBookingData.location || '',
-            preferred_date: 'To be confirmed via Calendly',
-            preferred_time: 'To be confirmed via Calendly',
-            message: (_lastBookingData.message || '') + '\n\n💳 PayPal Transaction ID: ' + txnId
-          });
-        } catch(ex) {}
-      }
-      try {
-        fetch('https://script.google.com/macros/s/AKfycbwCu9IGebSCcSiE95l83UtsdYB592Wg70Ge1GVbSRqhOaZ9HS2ebeLW4uC0iaKldizH/exec', {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: _lastBookingData.name,
-            email: _lastBookingData.email,
-            phone: _lastBookingData.phone || '',
-            service: _lastBookingData.service || '',
-            location: _lastBookingData.location || '',
-            date: 'To be confirmed via Calendly',
-            time: 'To be confirmed via Calendly',
-            message: (_lastBookingData.message || '') + '\nPayPal Transaction ID: ' + txnId,
-            transactionId: txnId,
-            depositStatus: 'paid'
-          })
-        });
-      } catch(ex) {}
-    }
-    // Show date selection step
-    document.getElementById('bookingPayStep').style.display = 'none';
-    document.getElementById('afterDepositCalendly').style.display = 'block';
-    document.getElementById('afterDepositCalendly').scrollIntoView({ behavior: 'smooth', block: 'center' });
-    showToast('✓ Payment verified! Now select your date & time.', 'success');
-  }
-
-  function openCalendlyFinal() {
-    Calendly.initPopupWidget({ url: 'https://calendly.com/bookings-aisharizvi/30min' });
-    window.addEventListener('message', function handler(e) {
-      if (e.data && e.data.event && e.data.event === 'calendly.event_scheduled') {
-        window.removeEventListener('message', handler);
-        setTimeout(function() {
-          document.getElementById('afterDepositCalendly').style.display = 'none';
-          document.getElementById('bookingSuccess').style.display = 'block';
-          document.getElementById('bookingSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
-          showToast('✦ All done! Aisha will confirm within 24 hours.', 'success');
-        }, 800);
-      }
-    });
   }
 
   function showToast(msg, type) {
@@ -4241,39 +4100,15 @@
   }
 
 </script>
-<!-- CALENDLY WIDGET SCRIPT -->
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 <script>
-  function openCalendly() {
-    Calendly.initPopupWidget({ url: 'https://calendly.com/bookings-aisharizvi/30min' });
-    return false;
-  }
-
-  function openCalendlyAndDeposit() {
-    Calendly.initPopupWidget({ url: 'https://calendly.com/bookings-aisharizvi/30min' });
-    // Listen for Calendly event scheduled
-    window.addEventListener('message', function handler(e) {
-      if (e.data && e.data.event && e.data.event === 'calendly.event_scheduled') {
-        window.removeEventListener('message', handler);
-        // Close calendly popup and show deposit step
-        setTimeout(function() {
-          document.getElementById('calendlyStep').style.display = 'none';
-          document.getElementById('bookingForm').style.display = 'none';
-          document.getElementById('calendlyDepositStep').style.display = 'block';
-          // Scroll to deposit step
-          document.getElementById('calendlyDepositStep').scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 1000);
-      }
-    });
-  }
-
-  function afterCalendlyDeposit() {
-    document.getElementById('calendlyDepositStep').style.display = 'none';
-    document.getElementById('calendlySuccess').style.display = 'block';
-    showToast('✦ Booking confirmed! Aisha will be in touch soon.', 'success');
-  }
 </script>
 
+<!-- Sticky mobile booking bar -->
+<div class="sticky-cta" aria-label="Quick booking actions">
+  <a class="cta-book" href="/booking.html#booking">Book Now</a>
+  <!-- CONSULT-CALL-LINK-SLOT: when Aisha sends her 15-minute consult booking link,
+       replace the href below with it. Nothing else needs to change. -->
+  <a class="cta-call" href="tel:+16314081708">Free 15-Min<br>Consult Call</a>
+</div>
 </body>
 </html>

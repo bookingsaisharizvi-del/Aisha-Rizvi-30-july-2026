@@ -1,0 +1,56 @@
+/* Sticky mobile call-to-action bar.
+   Shown only on phones so booking is always one tap away.
+   Uses explicit colours so it looks identical on every page,
+   whichever stylesheet that page happens to use. */
+
+.sticky-cta {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 900;
+  gap: 1px;
+  background: rgba(201, 169, 110, 0.25);
+  border-top: 1px solid rgba(201, 169, 110, 0.35);
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.sticky-cta a {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 15px 8px;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.sticky-cta .cta-book {
+  background: #c9a96e;
+  color: #14120f;
+  font-weight: 600;
+}
+
+.sticky-cta .cta-call {
+  background: #14120f;
+  color: #d4b483;
+}
+
+.sticky-cta a:active { opacity: 0.85; }
+
+@media (max-width: 760px) {
+  .sticky-cta { display: flex; }
+  /* keep the bar from covering the last line of any page */
+  body { padding-bottom: 58px; }
+}
+
+@media print {
+  .sticky-cta { display: none !important; }
+}
